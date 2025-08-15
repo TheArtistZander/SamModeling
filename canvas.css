@@ -179,6 +179,8 @@ footer {
   .gallery-slider {
     flex-direction: column;
     align-items: center;
+    animation: none;
+    overflow-x: auto;
   }
 
   .gallery-slider img {
@@ -189,7 +191,7 @@ footer {
 /* Hero Gallery Slider */
 .hero-gallery {
   position: relative;
-  overflow-x: auto;
+  overflow: hidden;
   padding: 2rem 0;
   background-color: #000;
   display: flex;
@@ -200,10 +202,9 @@ footer {
 .gallery-slider {
   display: flex;
   gap: 1rem;
-  padding: 1rem;
+  animation: slideGallery 30s linear infinite;
   max-width: 100%;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  padding: 1rem;
 }
 
 .gallery-slider img {
@@ -211,10 +212,20 @@ footer {
   max-height: 400px;
   width: auto;
   max-width: 100%;
-  scroll-snap-align: center;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Continuous leftward scroll animation */
+@keyframes slideGallery {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* CTA Overlay */
